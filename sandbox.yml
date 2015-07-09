@@ -1,0 +1,23 @@
+---
+- hosts: virtual
+  vars:
+    var1: 80
+  remote_user: root
+  tasks:
+  - name: Updating motd
+    template: src={{item}} dest=/etc/motd
+    with_first_found: 
+    - files:
+      - motd.j2-{{ansible_fqdn}}
+      - motd.j2
+      paths:
+      - templates/
+#  - name: write the apache config file
+#    template: src=/srv/httpd.j2 dest=/etc/mo
+#    notify:
+#    - restart apache
+#  - name: ensure apache is running (and enable it at boot)
+#    service: name=httpd state=started enabled=yes
+#  handlers:
+#    - name: restart apache
+#      service: name=httpd state=restarted

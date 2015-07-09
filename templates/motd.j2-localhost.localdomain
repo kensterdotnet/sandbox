@@ -1,0 +1,2 @@
+Your current bios version is {{ansible_bios_version}}
+This is host is {{ansible_fqdn}}
